@@ -110,7 +110,7 @@ class FieldDriver():
     def GetDistanceToPoint(self, startPositionX: float, startPositionY: float, targetPositionX: float, targetPositionY: float) -> float:
         return math.sqrt(math.pow(startPositionX - targetPositionX, 2) + math.pow(startPositionY - targetPositionY, 2))
 
-    def MoveToPosition(self, targetPositionX: float, targetPositionY: float) -> None:
+    def BewegeZuPosition(self, targetPositionX: float, targetPositionY: float) -> None:
         diffX: float = targetPositionX - self.currentPositionX
         diffY: float = targetPositionY - self.currentPositionY
         collision: bool = False
@@ -141,7 +141,7 @@ class FieldDriver():
         for orientationLine in self.orientationLines:
             orientationLineIntersection = self.GetIntersection(self.currentPositionX, self.currentPositionY, targetPositionX, targetPositionY, orientationLine[0], orientationLine[1], orientationLine[2], orientationLine[3])
             if orientationLineIntersection != None:
-                self.MoveToPosition(orientationLineIntersection[0], orientationLineIntersection[1])
+                self.BewegeZuPosition(orientationLineIntersection[0], orientationLineIntersection[1])
                 break
             
         if targetAngle >= targetAngle + 5 and targetAngle <= targetAngle - 5:
@@ -308,7 +308,7 @@ f: FieldDriver = FieldDriver(15, 14)
 # fieldDriver = FieldDriver(2, 2)
 # print(fieldDriver.GetDistanceToPoint(15, 30, fieldDriver.currentPositionX, fieldDriver.currentPositionY))
 
-f.MoveToPosition(15.0, 30.0)
+f.BewegeZuPosition(15.0, 30.0)
 
 
 if DEPLOYMENT:
